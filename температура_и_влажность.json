@@ -1,0 +1,204 @@
+[
+    {
+        "apiVersion": "influxdata.com/v2alpha1",
+        "kind": "Dashboard",
+        "metadata": {
+            "name": "intelligent-tu-e43001"
+        },
+        "spec": {
+            "charts": [
+                {
+                    "colors": [
+                        {
+                            "id": "base",
+                            "name": "ocean",
+                            "type": "text",
+                            "hex": "#4591ED"
+                        },
+                        {
+                            "id": "DQ8xwBZrgrKELifA9jezA",
+                            "name": "rainforest",
+                            "type": "text",
+                            "hex": "#4ED8A0",
+                            "value": 16
+                        },
+                        {
+                            "id": "QYhFneqa1c2dr_9yIUhJi",
+                            "name": "curacao",
+                            "type": "text",
+                            "hex": "#F95F53",
+                            "value": 32
+                        }
+                    ],
+                    "decimalPlaces": 2,
+                    "height": 4,
+                    "kind": "Single_Stat",
+                    "name": "Текущая температура",
+                    "queries": [
+                        {
+                            "query": "from(bucket: \"mybucket\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"topic\"] == \"temperature\")\n  |> filter(fn: (r) => r[\"_field\"] == \"value\")\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\n  |> yield(name: \"last\")"
+                        }
+                    ],
+                    "staticLegend": {},
+                    "suffix": " C⁰",
+                    "width": 5
+                },
+                {
+                    "axes": [
+                        {
+                            "base": "10",
+                            "name": "x",
+                            "scale": "linear"
+                        },
+                        {
+                            "base": "10",
+                            "label": "Temperature",
+                            "name": "y",
+                            "scale": "linear"
+                        }
+                    ],
+                    "colorizeRows": true,
+                    "colors": [
+                        {
+                            "id": "CmJpONyGBCd8AufbrfQy6",
+                            "name": "Nineteen Eighty Four",
+                            "type": "scale",
+                            "hex": "#31C0F6"
+                        },
+                        {
+                            "id": "lR8BE5RZlEtc7mJUeKFf6",
+                            "name": "Nineteen Eighty Four",
+                            "type": "scale",
+                            "hex": "#A500A5"
+                        },
+                        {
+                            "id": "_lMJv9helow-SiAuLEB9a",
+                            "name": "Nineteen Eighty Four",
+                            "type": "scale",
+                            "hex": "#FF7E27"
+                        }
+                    ],
+                    "geom": "monotoneX",
+                    "height": 4,
+                    "heightRatio": 0.11520190023752969,
+                    "hoverDimension": "auto",
+                    "kind": "Xy",
+                    "legendColorizeRows": true,
+                    "legendOpacity": 1,
+                    "legendOrientationThreshold": 100000000,
+                    "name": "Температура",
+                    "opacity": 1,
+                    "orientationThreshold": 100000000,
+                    "position": "overlaid",
+                    "queries": [
+                        {
+                            "query": "from(bucket: \"mybucket\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"topic\"] == \"temperature\")\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)\n  |> yield(name: \"mean\")"
+                        }
+                    ],
+                    "shade": true,
+                    "staticLegend": {
+                        "colorizeRows": true,
+                        "heightRatio": 0.11520190023752969,
+                        "opacity": 1,
+                        "orientationThreshold": 100000000,
+                        "widthRatio": 1
+                    },
+                    "width": 5,
+                    "widthRatio": 1,
+                    "xCol": "_time",
+                    "yCol": "_value",
+                    "yPos": 4
+                },
+                {
+                    "colors": [
+                        {
+                            "id": "base",
+                            "name": "laser",
+                            "type": "text",
+                            "hex": "#00C9FF"
+                        }
+                    ],
+                    "decimalPlaces": 2,
+                    "height": 4,
+                    "kind": "Single_Stat",
+                    "name": "Текущая влажность",
+                    "queries": [
+                        {
+                            "query": "from(bucket: \"mybucket\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"topic\"] == \"humidity\")\n  |> filter(fn: (r) => r[\"_field\"] == \"value\")\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\n  |> yield(name: \"last\")"
+                        }
+                    ],
+                    "staticLegend": {},
+                    "suffix": "%",
+                    "width": 5,
+                    "xPos": 5
+                },
+                {
+                    "axes": [
+                        {
+                            "base": "10",
+                            "name": "x",
+                            "scale": "linear"
+                        },
+                        {
+                            "base": "10",
+                            "label": "Humidity",
+                            "name": "y",
+                            "scale": "linear"
+                        }
+                    ],
+                    "colorizeRows": true,
+                    "colors": [
+                        {
+                            "id": "cbnb0mOjLGyui0PkbJCwj",
+                            "name": "Atlantis",
+                            "type": "scale",
+                            "hex": "#74D495"
+                        },
+                        {
+                            "id": "YEZjKFJfv2ibOVHXhFJ2Y",
+                            "name": "Atlantis",
+                            "type": "scale",
+                            "hex": "#3F3FBA"
+                        },
+                        {
+                            "id": "x_3mlRFMM91vXjZprKCVD",
+                            "name": "Atlantis",
+                            "type": "scale",
+                            "hex": "#FF4D9E"
+                        }
+                    ],
+                    "geom": "monotoneX",
+                    "height": 4,
+                    "hoverDimension": "auto",
+                    "kind": "Xy",
+                    "legendColorizeRows": true,
+                    "legendOpacity": 1,
+                    "legendOrientationThreshold": 100000000,
+                    "name": "Влажность",
+                    "opacity": 1,
+                    "orientationThreshold": 100000000,
+                    "position": "overlaid",
+                    "queries": [
+                        {
+                            "query": "from(bucket: \"mybucket\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"topic\"] == \"humidity\")\n  |> filter(fn: (r) => r[\"_field\"] == \"value\")\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)\n  |> yield(name: \"mean\")"
+                        }
+                    ],
+                    "shade": true,
+                    "staticLegend": {
+                        "colorizeRows": true,
+                        "opacity": 1,
+                        "orientationThreshold": 100000000,
+                        "widthRatio": 1
+                    },
+                    "width": 5,
+                    "widthRatio": 1,
+                    "xCol": "_time",
+                    "xPos": 5,
+                    "yCol": "_value",
+                    "yPos": 4
+                }
+            ],
+            "name": "Температура и влажность"
+        }
+    }
+]
